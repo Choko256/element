@@ -38,6 +38,7 @@
         @input="handleInput"
         @focus="handleFocus"
         @blur="handleBlur"
+        @keyup="handleKeyup"
       >
       <i class="el-input__icon el-icon-loading" v-if="validating"></i>
       <!-- 后置元素 -->
@@ -62,7 +63,8 @@
       :maxlength="maxlength"
       :minlength="minlength"
       @focus="handleFocus"
-      @blur="handleBlur">
+      @blur="handleBlur"
+      @keyup="handleKeyup">
     </textarea>
   </div>
 </template>
@@ -163,6 +165,9 @@
       },
       handleIconClick(event) {
         this.$emit('click', event);
+      },
+      handleKeyup(event) {
+        this.$emit('keyup', event);
       },
       setCurrentValue(value) {
         if (value === this.currentValue) return;
